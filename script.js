@@ -3,15 +3,21 @@ let computerScore = 0;
 
 let computerPlay = function() {
   let randomNumber = Math.floor(Math.random() * 3);
+  
   if (randomNumber === 0) {
-    return "rock";
+    randomNumber = randomNumber.toString();
+    randomNumber = randomNumber.replace("0", "rock");
   }
   else if (randomNumber === 1) {
-    return "paper";
+    randomNumber = randomNumber.toString();
+    randomNumber = randomNumber.replace("1", "paper");
   }
   else {
-    return "scissors";
+    randomNumber = randomNumber.toString();
+    randomNumber = randomNumber.replace("2", "scissors");
   }
+  return randomNumber;
+  
 }
 
 let compare = function(choice1, choice2) {
@@ -63,4 +69,3 @@ let game = function() {
 }
 
 game();
-console.log("Your score is: " + playerScore);
