@@ -20,7 +20,8 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection == "scissors" && computerSelection == "scissors")
     )
     {
-    let tie = "it's a tie!";
+    let tie = 0;
+    console.log("it's a tie!");
     return tie;
     }
   else if (
@@ -29,7 +30,8 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection == "scissors" && computerSelection == "paper")
     )
     {
-    let win = ("you win! " + playerSelection + " beats " + computerSelection);
+    let win = 2;
+    console.log("you win! " + playerSelection + " beats " + computerSelection);
     return win;
     }
   else if (
@@ -38,12 +40,38 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection == "scissors" && computerSelection == "rock")
     )
     {
-    let loose = ("you lose! " + playerSelection + " beats " + computerSelection);
+    let loose = 1;
+    console.log("you lose! " + playerSelection + " beats " + computerSelection);
     return loose;
     }
 }
 
-let playerSelection = "rock";
-let computerSelection = computerPlay();
+let game = function() {
+  let userWins = 0;
+  let computerWins = 0;
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("rock, paper or scissors?");
+    let computerSelection = computerPlay();
+    let roundResult = playRound(playerSelection, computerSelection);
+    if (roundResult == 1) {
+      computerWins++;
+    }
+    else if (roundResult == 2) {
+      userWins++;
+    }
+    }
+  if (userWins > computerWins) {
+    let finalVictory = "final: you win!";
+    return finalVictory;
+  }
+  else if (userWins < computerWins) {
+    let finalLoss = "final: you loose!";
+    return finalLoss;
+  }
+  else {
+    let finalTie = "final: it's a tie!"
+    return finalTie;
+  }
+}
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
